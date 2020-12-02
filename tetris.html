@@ -694,8 +694,9 @@
         function addMainDom() {
             let addblock = pre_pattern.querySelector(".type");
             let random_pos = Math.floor(Math.random() * 13);
+            let top_distance = -addblock.arr.length;
             main_area.prepend(addblock);
-            addblock.setAttribute("style", "top:-1rem;left:" + random_pos + "rem;");
+            addblock.setAttribute("style", "top:" + top_distance + "rem;left:" + random_pos + "rem;");
             if (pre_pattern.querySelector(".type")) {
                 pre_pattern.querySelector(".type").remove();
             }
@@ -705,7 +706,6 @@
         //set pre color
         function setPrecolor(pre) {
             let color_blocks = pre_pattern.querySelectorAll(".block");
-            console.log(color_blocks)
             for (let cb of color_blocks) {
                 cb.style.background = pre.color[1];
             }
@@ -772,7 +772,6 @@
                 if (arr[0][item] != 0) {
                     clearInterval(moveNewBlock);
                     last_score.innerHTML = score;
-                    highest_score.innerHTML = localStorage.gameHightestScore;
                     end_popUp.style.display = "flex";
                     if (!localStorage.gameHightestScore) {
                         localStorage.gameHightestScore = 0;
@@ -780,6 +779,7 @@
                     if (localStorage.gameHightestScore < score) {
                         localStorage.setItem("gameHightestScore", score);
                     }
+                    highest_score.innerHTML = localStorage.gameHightestScore;
                     return;
                 }
             }
