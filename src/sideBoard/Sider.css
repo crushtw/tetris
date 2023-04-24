@@ -1,0 +1,31 @@
+.tool {
+    width: 8rem;
+    height: 24rem;
+    border: 1px black solid;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.next-pattern-box {
+    margin-bottom: 5rem;
+}
+
+.next-pattern-box p {
+    text-align: center;
+}
+
+.pre-pattern {
+    margin: 0 auto;
+    width: 4rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-control {
+    display: none;
+}
