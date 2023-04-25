@@ -43,7 +43,7 @@
     |   |-- manifest.json
     |   |-- robots.txt
     |-- src
-        |-- App.css
+        |-- App.css	                // 全局样式
         |-- App.tsx					// 模块入口文件
         |-- index.css
         |-- index.tsx				// 项目入口文件

@@ -1,6 +1,5 @@
 import React from "react";
 import './EndBoard.css';
-import {Button} from "antd";
 
 interface EndBoardProps {
 	finalScore: number;
@@ -34,7 +33,7 @@ const EndBoard = (props: EndBoardProps) => {
 				Highest score：
 				<span id="highest_score">{highestScore()}</span>
 			</p>
-			<Button type="primary" onClick={handleReStart}>restart</Button>
+			<div className="btn" onClick={handleReStart}>restart</div>
 		</div>
 	);
 };

@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { blockColor, allColor} from "../common/constants";
 import './StartBoard.css';
-import {Button} from "antd";
 import {Color} from "../common/interface";
 import {StartGameProps} from "../App";
 
@@ -21,21 +20,27 @@ const StartBoard = (props: StartBoardProps) => {
 
 	return (
 		<div className="startBoard">
-            <p>请选择颜色</p>
+            <p>choose color</p>
 			<div className="startBoardList">
-				{blockColor.map(item => (
-					<p
-						key={item.text}
-						className="color"
-						style={{
-							borderColor: item.borderColor,
-							background: selectedColor === item.text ? allColor[item.text][2] : '',
-						}}
-						onClick={() => getColor(item.text)}
-					>{item.text}</p>
-				))}
+				{blockColor.map(item => {
+					const selectColor: string = selectedColor === item.text
+						? 'selectColor'
+						: '';
+					const background: string = selectedColor === item.text
+						? allColor[item.text][6]
+						: ''
+
+					return (
+						<p
+							key={item.text}
+							className={`color ${selectColor}`}
+							style={{background}}
+							onClick={() => getColor(item.text)}
+						>{item.text}</p>
+					)
+				})}
 			</div>
-			<Button type="primary" onClick={clickToStart}>start</Button>
+			<div className="btn" onClick={clickToStart}>start</div>
    		 </div>
 	);
 }

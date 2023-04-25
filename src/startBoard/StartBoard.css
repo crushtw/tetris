@@ -1,28 +1,32 @@
 .startBoard {
     height: 14rem;
     width: 12rem;
-    border: 1px grey solid;
     border-radius: 5px;
     margin: 4rem auto 6rem;
+	padding: 0.5rem 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     background: white;
+	box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
 }
 
 .color {
-    border: 1px black solid;
+    border: 1px solid #d9d9d9;
     border-radius: 0.25rem;
     width: 4rem;
     height: 2rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin: 0.2rem 0.25rem;
     line-height: 2rem;
+	cursor: pointer;
 }
 
-.color:hover {
-    cursor: pointer
+.color:hover,
+.color.selectColor {
+	border: 0 transparent;
+    box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
 }
 
 .startBoardList {
