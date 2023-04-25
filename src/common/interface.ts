@@ -36,3 +36,10 @@ export interface Block extends HTMLElement {
 }
 
 export type BlockArr = (0 | string)[][];
+
+export interface ArrowActionProps {
+	arr: BlockArr,
+	item: Block,
+	cur_row: number,
+	cur_col: number,
+}

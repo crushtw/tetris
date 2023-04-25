@@ -1,5 +1,5 @@
 import {blockTypes} from "../common/constants";
-import {CreateBlockProps, TypeCondition, Color, Block} from "../common/interface";
+import {CreateBlockProps, TypeCondition, Color, Block, BlockArr} from "../common/interface";
 import {getRandomColor} from "./color";
 
 export const getTypeCondition = (arr: number[][]): TypeCondition => {
@@ -48,16 +48,21 @@ export const createBlock = (props: CreateBlockProps & {color: Color}): Block => 
     return new_block as Block;
 }
 
+interface RefreshBlockProps {
+	main_area: HTMLElement,
+	arr: BlockArr,
+}
 //  use arr to render blocks
-export const refreshBlock = (arr: (string | number)[][], main_area: HTMLElement & Block): void => {
-	const old_div = document.querySelectorAll(".block-arr");
+export const refreshBlock = (props: RefreshBlockProps): void => {
+	const {main_area, arr} = props;
+	const old_div: NodeListOf<Element> = document.querySelectorAll(".block-arr");
 	for (let old of Array.from(old_div)) {
 		old.remove();
 	}
 	for (let i = 0; i < arr.length; i++) {
 		for (let j = 0; j < arr[i].length; j++) {
 			if (arr[i][j] !== 0) {
-				let div = document.createElement('div');
+				const div: HTMLDivElement = document.createElement('div');
 				div.className = "block-arr";
 				main_area.prepend(div);
 				div.style.background = arr[i][j] as string;
@@ -68,8 +73,8 @@ export const refreshBlock = (arr: (string | number)[][], main_area: HTMLElement 
 	}
 }
 
-//transpose arr
-export const transpose = (origin_arr: number[][]): number[][] => {
+//transposeBlock arr
+export const transposeBlock = (origin_arr: number[][]): number[][] => {
 	const new_arr: number[][] = [];
 	for (let i = 0; i < origin_arr[0].length; i++) {
 		new_arr[i] = [];
@@ -78,4 +83,12 @@ export const transpose = (origin_arr: number[][]): number[][] => {
 		}
 	}
 	return new_arr;
+}
+
+// 获取移动中的blocks
+export const getMovingBlocks = (main_area: HTMLElement): Block | null => {
+	if (main_area) {
+		return main_area.querySelector(".type")
+	}
+	return null;
 }
