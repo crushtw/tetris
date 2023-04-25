@@ -11,3 +11,11 @@
 html {
 	font-size: 25px;
 }
+
+.ant-btn {
+	width: 80px;
+    height: 36px;
+    font-size: 0.8rem;
+    padding: 0;
+    line-height: 30px;
+}
