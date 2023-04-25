@@ -2,22 +2,21 @@ import React, {useState} from "react";
 import { blockColor, allColor} from "../common/constants";
 import './StartBoard.css';
 import {Button} from "antd";
-import {Color, StatusType} from "../common/interface";
+import {Color} from "../common/interface";
+import {StartGameProps} from "../App";
 
 interface StartBoardProps {
-	switchStatus: (nextStatus: StatusType) => void;
-	selectColor: (color: Color) => void;
+	startGame: (props: StartGameProps) => void;
 }
 
 const StartBoard = (props: StartBoardProps) => {
-	const {switchStatus, selectColor} = props;
+	const {startGame} = props;
 	const [selectedColor, setSelectedColor] = useState('green' as Color);
-	const getColor = (text: Color) => {
+	const getColor = (text: Color): void => {
 		setSelectedColor(text);
 	}
-	const clickToStart = () => {
-		switchStatus('doing');
-		selectColor(selectedColor);
+	const clickToStart = (): void => {
+		startGame({nextStatus: 'doing', selectedColor});
 	}
 
 	return (
@@ -26,10 +25,11 @@ const StartBoard = (props: StartBoardProps) => {
 			<div className="startBoardList">
 				{blockColor.map(item => (
 					<p
+						key={item.text}
 						className="color"
 						style={{
 							borderColor: item.borderColor,
-							background: selectedColor === item.text ? allColor[item.text][3] : '',
+							background: selectedColor === item.text ? allColor[item.text][2] : '',
 						}}
 						onClick={() => getColor(item.text)}
 					>{item.text}</p>
