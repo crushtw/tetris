@@ -4,7 +4,7 @@ import React, {useRef, useState} from 'react';
 import Sider from './sideBoard/Sider';
 import StartBoard from './startBoard/StartBoard';
 import EndBoard from './endBoard/EndBoard';
-import {Block, BlockArr, Color, Direction, StatusType} from './common/interface';
+import {Block, BlockArr, Color, Direction} from './common/interface';
 
 import './App.css';
 import {scoringRules} from './common/constants';
@@ -13,7 +13,6 @@ import {setPrecolor} from './utils/color';
 import {downArrow, leftArrow, rightArrow, upArrow} from './utils/arrowAction';
 
 export interface StartGameProps {
-	nextStatus: StatusType,
 	selectedColor: Color,
 }
 const App = () => {
@@ -88,8 +87,8 @@ const App = () => {
 	}
 	
 	const handleStartGame = (props: StartGameProps): void => {
-		const {nextStatus, selectedColor} = props;
-		setStatus(nextStatus);
+		const {selectedColor} = props;
+		setStatus('doing');
 		color = selectedColor;
 		clearInterval(moveNewBlock);
 		const main_area: HTMLElement = getMainArea();
@@ -108,6 +107,7 @@ const App = () => {
 							temporaryArr.push(1); //moving
 						} else {
 							temporaryArr.push(0); //stop moving
+							break;
 						}
 					}
 					let isStop: Boolean = temporaryArr.includes(0);
@@ -157,6 +157,7 @@ const App = () => {
 						break;
 					case 38:
 						upArrow({item, cur_row, cur_col, arr});
+						break;
 				}
 			}
 		}

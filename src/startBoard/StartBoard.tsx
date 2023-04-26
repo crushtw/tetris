@@ -15,7 +15,7 @@ const StartBoard = (props: StartBoardProps) => {
 		setSelectedColor(text);
 	}
 	const clickToStart = (): void => {
-		startGame({nextStatus: 'doing', selectedColor});
+		startGame({selectedColor});
 	}
 
 	return (

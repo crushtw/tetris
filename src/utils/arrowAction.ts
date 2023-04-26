@@ -51,8 +51,8 @@ export const downArrow = (props: ArrowActionProps & {main_area: HTMLElement, mov
 	for (let pos in item.boundary["bottom"]) {
 		let row: number = item.boundary["bottom"][pos][0] + cur_row;
 		let col: number = item.boundary["bottom"][pos][1] + cur_col;
-		const amendRowDif = item.arr.length;
-		for (let i = row + amendRowDif; i < arr.length; i++) {
+		for (let i = row; i < arr.length; i++) {
+			if (i < 0) continue;
 			if (arr[i][col] !== 0) {
 				if (i - row - 1 < min_distance) {
 					min_distance = i - row - 1;
@@ -133,6 +133,5 @@ export const upArrow = (props: ArrowActionProps): void => {
 				item.state = 0;
 				break;
 		}
-
 	}
-}
+};
