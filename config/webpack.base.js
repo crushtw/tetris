@@ -21,7 +21,20 @@ module.exports = {
 						presets: ['@babel/preset-react', '@babel/preset-typescript']
 					}
 				}
-			}]
+			},
+			{
+				test: /\.(png|jpe?g|gif|svg)$/,
+				type: "asset",
+				parser: {
+					dataUrlCondition: {
+						maxSize: 10 * 1024,
+					},
+				},
+				generator: {
+					filename: "static/images/[hash:10][ext][query]",
+				}
+			},
+		]
 	},
 	resolve: {
 		extensions: ['.js', '.tsx', '.ts'],

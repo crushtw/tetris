@@ -10,10 +10,6 @@
     align-items: center;
 }
 
-.next-pattern-box {
-    margin-bottom: 5rem;
-}
-
 .next-pattern-box p {
     text-align: center;
 }
@@ -27,6 +23,21 @@
     align-items: center;
 }
 
-.mobile-control {
-    display: none;
+.arrow-control {
+    display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.arrow-control img {
+	width: 1.5rem;
+	height: 1.5rem;
+	cursor: pointer;
+}
+
+.arrow-control .l-r-arrow {
+	width: 4.5rem;
+	display: flex;
+	justify-content: space-between;
 }

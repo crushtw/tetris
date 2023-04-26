@@ -24,7 +24,7 @@ const EndBoard = (props: EndBoardProps) => {
 	}
 
 	return (
-		<div className="endBoard">
+		<div className="end-board">
 			<p className="over">Game over</p>
 			<p className="score">
 				score：<span id="last_score">{finalScore}</span>

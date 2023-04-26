@@ -19,7 +19,7 @@ const StartBoard = (props: StartBoardProps) => {
 	}
 
 	return (
-		<div className="startBoard">
+		<div className="start-board">
             <p>choose color</p>
 			<div className="startBoardList">
 				{blockColor.map(item => {
