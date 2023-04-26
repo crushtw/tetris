@@ -23,7 +23,7 @@
 - `npm run build`
 
 ## 项目结构
-|-- lanoyade
+	|-- lanoyade
     |-- .babelrc                    // 用于parcel打包配置
     |-- .gitignore            	    // git忽略文件配置
     |-- README.md                   // help
