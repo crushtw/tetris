@@ -43,3 +43,9 @@ export interface ArrowActionProps {
 	cur_row: number,
 	cur_col: number,
 }
+
+export interface ArrowData {
+	text: string;
+	src: any;
+	alt: string;
+}

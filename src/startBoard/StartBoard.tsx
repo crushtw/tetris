@@ -20,6 +20,10 @@ const StartBoard = (props: StartBoardProps) => {
 
 	return (
 		<div className="start-board">
+			<p
+				className="game-name"
+				style={{backgroundColor: allColor[selectedColor][1]}}
+			>tetris</p>
             <p>choose color</p>
 			<div className="startBoardList">
 				{blockColor.map(item => {
@@ -27,7 +31,7 @@ const StartBoard = (props: StartBoardProps) => {
 						? 'selectColor'
 						: '';
 					const background: string = selectedColor === item.text
-						? allColor[item.text][6]
+						? `linear-gradient(transparent, ${allColor[item.text][5]})`
 						: ''
 
 					return (

@@ -74,24 +74,30 @@
     }
 
     .arrow-control {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 4rem;
         height: 4rem;
     }
-
+	
 	.arrow-control .l-r-arrow {
+		display: flex;
+		justify-content: space-between;
 		width: 3.6rem;
 	}
 
 	.arrow-control img {
 		width: 1.2rem;
 		height: 1.2rem;
+		cursor: pointer;
 	}
 
 	.pre-pattern {
 		margin-top: 0.2rem;
+	}
+	.tips-box {
+		display: none !important;
 	}
 }

@@ -24,20 +24,22 @@
 }
 
 .arrow-control {
-    display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
+    display: none;
 }
 
-.arrow-control img {
-	width: 1.5rem;
-	height: 1.5rem;
-	cursor: pointer;
+.tips-box {
+	font-size: 0.65rem;
+	margin: -0.5rem 0;
 }
 
-.arrow-control .l-r-arrow {
-	width: 4.5rem;
+.tips-box > div {
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
+	margin: 0.5rem 0;
+}
+
+.tips-box img {
+	width: 1.1rem;
+	height: 1.1rem;
+	margin-right: 0.8rem;
 }

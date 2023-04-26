@@ -1,4 +1,4 @@
-import {BlockColor, BlockTypes} from "./interface";
+import {ArrowData, BlockColor, BlockTypes} from "./interface";
 
 export const blockColor: BlockColor[] = [
 	{
@@ -35,12 +35,12 @@ export const blockColor: BlockColor[] = [
 
 export const allColor: {[key: string]: {[key: string]: string}} = {
 	green: {
-		"1": "#3f8a87",
+		"1": "#5c9943",
 		"2": "#2f6e59",
 		"3": "#7bc9b0",
 		"4": "#4eac84",
-		"5": "#83d77d",
-		"6": "#5c9943"
+		"5": "#3f8a87",
+		"6": "#83d77d"
 	},
 	pink: {
 		"1": "rgb(254,156,171)",
@@ -142,3 +142,26 @@ export const blockTypes: BlockTypes = {
 		innerHTML: `<div class="block"></div><div class="type-6-1"><div class="block"></div><div class="block"></div></div>`,	
 	}
 }
+
+export const arrowData: ArrowData[] = [
+	{
+		text: '旋转',
+		src: require('../assets/images/arrow-up.svg'),
+		alt: 'up',
+	},
+	{
+		text: '快速落下',
+		src: require('../assets/images/arrow-down.svg'),
+		alt: 'down',
+	},
+	{
+		text: '左移',
+		src: require('../assets/images/arrow-left.svg'),
+		alt: 'left',
+	},
+	{
+		text: '右移',
+		src: require('../assets/images/arrow-right.svg'),
+		alt: 'right',
+	},
+]
