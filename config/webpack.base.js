@@ -11,6 +11,7 @@ module.exports = {
 	output: {
 		filename: 'static/js/[name].js',
 		clean: true,
+		assetModuleFilename: 'static/images/[hash][ext][query]'
 	},
 	module: {
 		rules: [
@@ -33,15 +34,7 @@ module.exports = {
 			},
 			{
 				test: /\.(png|jpe?g|gif|svg)$/,
-				type: "asset",
-				parser: {
-					dataUrlCondition: {
-						maxSize: 10 * 1024,
-					},
-				},
-				generator: {
-					filename: "static/images/[hash:10][ext][query]",
-				}
+				type: 'asset/resource',
 			},
 		]
 	},

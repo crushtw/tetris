@@ -1,37 +1,13 @@
-import {ArrowData, BlockColor, BlockTypes} from "./interface";
+import {ArrowData, Color, BlockTypes} from "./interface";
+import yellowBg from '../assets/images/yellow.jpg';
+import greenBg from '../assets/images/green.jpg';
+import redBg from '../assets/images/red.jpg';
+import blueBg from '../assets/images/blue.jpg';
+import purpleBg from '../assets/images/purple.jpg';
+import pinkBg from '../assets/images/pink.jpg';
 
-export const blockColor: BlockColor[] = [
-	{
-		text: 'green',
-		borderColor: 'green',
-		backgroundColor: '#7bc9b0',
-	},
-	{
-		text: 'pink',
-		borderColor: 'pink',
-		backgroundColor: '',
-	},
-	{
-		text: 'yellow',
-		borderColor: 'yellow',
-		backgroundColor: '',
-	},
-	{
-		text: 'red',
-		borderColor: 'red',
-		backgroundColor: '',
-	},
-	{
-		text: 'purple',
-		borderColor: 'rgb(57, 6, 151)',
-		backgroundColor: '',
-	},
-	{
-		text: 'blue',
-		borderColor: 'blue',
-		backgroundColor: '',
-	},
-];
+
+export const blockColor: Color[] = ['yellow', 'blue','pink', 'purple', 'red', 'green'];
 
 export const allColor: {[key: string]: {[key: string]: string}} = {
 	green: {
@@ -54,17 +30,17 @@ export const allColor: {[key: string]: {[key: string]: string}} = {
 		"1": "#be7a3d",
 		"2": "#ba872e",
 		"3": "#deb040",
-		"4": "#f9d857",
-		"5": "#fce56f",
+		"4": "#fce56f",
+		"5": "#f9d857",
 		"6": "#fffe96"
 	},
 	purple: {
 		"1": "#905fa8",
-		"2": "#a478df",
-		"3": "#ad97f0",
+		"2": "#bd96eb",
+		"3": "#a478df",
 		"4": "#935bd4",
-		"5": "#bd96eb",
-		"6": "#9477f6"
+		"5": "#9477f6",
+		"6": "#ad97f0"
 	},
 	red: {
 		"1": "#7d2b2a",
@@ -164,4 +140,13 @@ export const arrowData: ArrowData[] = [
 		src: require('../assets/images/arrow-right.svg'),
 		alt: 'right',
 	},
-]
+];
+
+export const colorBgMap: Map<Color, any> = new Map([
+	['yellow', yellowBg],
+	['green', greenBg],
+	['blue', blueBg],
+	['purple', purpleBg],
+	['pink', pinkBg],
+	['red', redBg],
+]);

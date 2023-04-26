@@ -1,11 +1,6 @@
 export type Color = 'green' | 'yellow' | 'red' | 'purple' | 'blue' | 'pink';
 export type NumIndex = '1' | '2' | '3' | '4' | '5' | '6';
 export type Direction = 'left' | 'right' | 'bottom' | 'top';
-export interface BlockColor {
-	text: Color,
-	borderColor: string,
-	backgroundColor?: string,
-}
 
 export type StatusType = 'start' | 'doing' | 'end';
 
