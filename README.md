@@ -2,8 +2,8 @@
 
 -   俄罗斯方块小游戏
 -   在线体验：https://crushtw.github.io/tetris/
--   github地址：https://github.com/crushtw/tetris
--	主分支：main
+-   github 地址：https://github.com/crushtw/tetris
+-   主分支：main
 
 ## 环境依赖及主要技术栈
 
@@ -15,15 +15,18 @@
 安装依赖：`npm install`
 
 项目启动（二选一即可）：
-- 使用 webpack 启动：`npm start`
 
-- 或使用 parcel 启动：`npm run parcel`
+-   使用 webpack 启动：`npm start`
+
+-   或使用 parcel 启动：`npm run parcel`
 
 项目打包：
-- `npm run build`
+
+-   `npm run build`
 
 ## 项目结构
-	|-- lanoyade
+
+    |-- lanoyade
     |-- .babelrc                    // 用于parcel打包配置
     |-- .gitignore            	    // git忽略文件配置
     |-- README.md                   // help
@@ -38,15 +41,14 @@
     |-- public                      // 静态资源目录
     |   |-- favicon.ico
     |   |-- index.html
-    |   |-- logo192.png
-    |   |-- logo512.png
-    |   |-- manifest.json
-    |   |-- robots.txt
     |-- src
         |-- App.css	                // 全局样式
         |-- App.tsx					// 模块入口文件
         |-- index.css
         |-- index.tsx				// 项目入口文件
+    	|-- assets                  // 图片、css等资源文件
+        |   |-- images				// 图片文件
+    	|   |-- style				// 样式文件
         |-- common
         |   |-- constants.ts        // 常量
         |   |-- interface.ts        // 通用接口
@@ -59,8 +61,6 @@
         |-- startBoard				// 游戏开始组件
         |   |-- StartBoard.css
         |   |-- StartBoard.tsx
-        |-- style					// 样式文件
-        |   |-- block.css			// 各类型方块样式
         |-- utils					// 工具文件
             |-- arrowAction.ts		// 移动方块fn
             |-- block.ts			// 方块获取、计算、转换等fn
