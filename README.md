@@ -14,11 +14,9 @@
 
 安装依赖：`npm install`
 
-项目启动（二选一即可）：
+项目启动：
 
--   使用 webpack 启动：`npm start`
-
--   或使用 parcel 启动：`npm run parcel`
+-   `npm start`
 
 项目打包：
 
@@ -27,7 +25,6 @@
 ## 项目结构
 
     |-- lanoyade
-    |-- .babelrc                    // 用于parcel打包配置
     |-- .gitignore            	    // git忽略文件配置
     |-- README.md                   // help
     |-- package-lock.json

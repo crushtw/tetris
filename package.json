@@ -22,8 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "webpack-dev-server -c config/webpack.dev.js",
-    "build": "webpack -c config/webpack.prod.js",
-    "parcel": "parcel public/index.html"
+    "build": "webpack -c config/webpack.prod.js"
   },
   "eslintConfig": {
     "extends": [

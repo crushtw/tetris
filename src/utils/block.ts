@@ -3,7 +3,7 @@ import {CreateBlockProps, TypeCondition, Color, Block, BlockArr} from "../common
 import {getRandomColor} from "./color";
 
 export const getTypeCondition = (arr: number[][]): TypeCondition => {
-    let type_condition: TypeCondition = {
+    let typeCondition: TypeCondition = {
         left: {},
         right: {},
         bottom: {},
@@ -14,21 +14,21 @@ export const getTypeCondition = (arr: number[][]): TypeCondition => {
         for (let j = 0; j < arr[i].length; j++) {
             if (arr[i][j] !== 0) {
                 if (j === 0 || arr[i][j - 1] === 0) {
-                    type_condition["left"][i] = [i, j];
+                    typeCondition["left"][i] = [i, j];
                 }
                 if (j === arr[i].length - 1 || arr[i][j + 1] === 0) {
-                    type_condition["right"][i] = [i, j];
+                    typeCondition["right"][i] = [i, j];
                 }
                 if (i === arr.length - 1 || arr[i + 1][j] === 0) {
-                    type_condition["bottom"][j] = [i, j];
+                    typeCondition["bottom"][j] = [i, j];
                 }
                 if (i === 0 || arr[i - 1][j] === 0) {
-                    type_condition["top"][j] = [i, j];
+                    typeCondition["top"][j] = [i, j];
                 }
             }
         }
     }
-    return type_condition;
+    return typeCondition;
 }
 
 export const getBlock = (color: Color): Block => {
@@ -38,25 +38,25 @@ export const getBlock = (color: Color): Block => {
 }
 
 export const createBlock = (props: CreateBlockProps & {color: Color}): Block => {
-    const new_block: any = document.createElement("div");
-    new_block.className = `type ${props.className}`;
-    new_block.state = 0;
-    new_block.arr = props.arr;
-    new_block.color = getRandomColor(props.color);
-    new_block.boundary = getTypeCondition(props.arr);
-    new_block.innerHTML = props.innerHTML
-    return new_block as Block;
+    const newBlock: any = document.createElement("div");
+    newBlock.className = `type ${props.className}`;
+    newBlock.state = 0;
+    newBlock.arr = props.arr;
+    newBlock.color = getRandomColor(props.color);
+    newBlock.boundary = getTypeCondition(props.arr);
+    newBlock.innerHTML = props.innerHTML
+    return newBlock as Block;
 }
 
 interface RefreshBlockProps {
-	main_area: HTMLElement,
+	mainArea: HTMLElement,
 	arr: BlockArr,
 }
 //  use arr to render blocks
 export const refreshBlock = (props: RefreshBlockProps): void => {
-	const {main_area, arr} = props;
-	const old_div: NodeListOf<Element> = document.querySelectorAll(".block-arr");
-	for (let old of Array.from(old_div)) {
+	const {mainArea, arr} = props;
+	const oldDiv: NodeListOf<Element> = document.querySelectorAll(".block-arr");
+	for (let old of Array.from(oldDiv)) {
 		old.remove();
 	}
 	for (let i = 0; i < arr.length; i++) {
@@ -64,7 +64,7 @@ export const refreshBlock = (props: RefreshBlockProps): void => {
 			if (arr[i][j] !== 0) {
 				const div: HTMLDivElement = document.createElement('div');
 				div.className = "block-arr";
-				main_area.prepend(div);
+				mainArea.prepend(div);
 				div.style.background = arr[i][j] as string;
 				div.style.top = i + "rem";
 				div.style.left = j + "rem";
@@ -74,21 +74,21 @@ export const refreshBlock = (props: RefreshBlockProps): void => {
 }
 
 //transposeBlock arr
-export const transposeBlock = (origin_arr: number[][]): number[][] => {
-	const new_arr: number[][] = [];
-	for (let i = 0; i < origin_arr[0].length; i++) {
-		new_arr[i] = [];
-		for (let j = 0; j < origin_arr.length; j++) {
-			new_arr[i][j] = origin_arr[origin_arr.length - 1 - j][i];
+export const transposeBlock = (originArr: number[][]): number[][] => {
+	const newArr: number[][] = [];
+	for (let i = 0; i < originArr[0].length; i++) {
+		newArr[i] = [];
+		for (let j = 0; j < originArr.length; j++) {
+			newArr[i][j] = originArr[originArr.length - 1 - j][i];
 		}
 	}
-	return new_arr;
+	return newArr;
 }
 
 // 获取移动中的blocks
-export const getMovingBlocks = (main_area: HTMLElement): Block | null => {
-	if (main_area) {
-		return main_area.querySelector(".type")
+export const getMovingBlocks = (mainArea: HTMLElement): Block | null => {
+	if (mainArea) {
+		return mainArea.querySelector(".type")
 	}
 	return null;
 }

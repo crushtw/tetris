@@ -60,7 +60,7 @@ const App = () => {
 				arr[0] = (new Array(16)).fill(0);
 			}
 		}
-		refreshBlock({arr, main_area: getMainArea()});
+		refreshBlock({arr, mainArea: getMainArea()});
 		if (time > 0) {
 			setScore((preState: number) => preState + scoringRules[time]);
 		}
@@ -71,22 +71,22 @@ const App = () => {
 	}
 
 	const addPreDom = (): void => {
-		const pre_block: Block = getBlock(color);
-		const pre_pattern: HTMLElement = getPrePattern();
-		pre_pattern?.prepend(pre_block);
-		setPrecolor(pre_block, pre_pattern);
+		const preBlock: Block = getBlock(color);
+		const prePattern: HTMLElement = getPrePattern();
+		prePattern?.prepend(preBlock);
+		setPrecolor(preBlock, prePattern);
 	}
 	
 	const addMainDom = (): void => {
-		const pre_pattern: HTMLElement = getPrePattern();
-		const main_area: HTMLElement = getMainArea();
-		const addblock: Block = pre_pattern?.querySelector(".type") as Block;
-		const random_pos: number = Math.floor(Math.random() * 13);
-		const top_distance: number = -addblock.arr.length;
-		main_area.prepend(addblock);
-		addblock.setAttribute("style", "top:" + top_distance + "rem;left:" + random_pos + "rem;");
-		if (pre_pattern.querySelector(".type")) {
-			pre_pattern.querySelector(".type")?.remove();
+		const prePattern: HTMLElement = getPrePattern();
+		const mainArea: HTMLElement = getMainArea();
+		const addblock: Block = prePattern?.querySelector(".type") as Block;
+		const randomPos: number = Math.floor(Math.random() * 13);
+		const topDistance: number = -addblock.arr.length;
+		mainArea.prepend(addblock);
+		addblock.setAttribute("style", "top:" + topDistance + "rem;left:" + randomPos + "rem;");
+		if (prePattern.querySelector(".type")) {
+			prePattern.querySelector(".type")?.remove();
 		}
 		addPreDom();
 	}
@@ -105,17 +105,17 @@ const App = () => {
 		setStatus('doing');
 		color = selectedColor;
 		clearInterval(moveNewBlock);
-		const main_area: HTMLElement = getMainArea();
-		main_area?.addEventListener("DOMNodeInserted", function () {
-			const item: Block | null = getMovingBlocks(main_area);
+		const mainArea: HTMLElement = getMainArea();
+		mainArea?.addEventListener("DOMNodeInserted", function () {
+			const item: Block | null = getMovingBlocks(mainArea);
 			let temporaryArr: number[] = [];
 			if (item) {
 				moveNewBlock = setInterval(function () {
-					let cur_row: number = parseFloat(item.style.top);
-					let cur_col: number = parseFloat(item.style.left);
+					let curRow: number = parseFloat(item.style.top);
+					let curCol: number = parseFloat(item.style.left);
 					for (let pos in item.boundary["bottom"]) {
-						let row: number = item.boundary["bottom"][pos][0] + cur_row;
-						let col: number = item.boundary["bottom"][pos][1] + cur_col;
+						let row: number = item.boundary["bottom"][pos][0] + curRow;
+						let col: number = item.boundary["bottom"][pos][1] + curCol;
 						row = row < -1 ? -1 : row;
 						if (row !== arr.length - 1 && arr[row + 1][col] === 0) {
 							temporaryArr.push(1); //moving
@@ -130,8 +130,8 @@ const App = () => {
 						for (let dir in item.boundary) {
 							const direction: Direction = dir as Direction;
 							for (let index in item.boundary[direction]) {
-								let row: number = item.boundary[direction][index][0] + cur_row;
-								let col: number = item.boundary[direction][index][1] + cur_col;
+								let row: number = item.boundary[direction][index][0] + curRow;
+								let col: number = item.boundary[direction][index][1] + curCol;
 								row = row < 0 ? 0 : row;
 								arr[row][col] = item.color;
 							}
@@ -152,63 +152,63 @@ const App = () => {
 	
 		//PC control block moving
 		document.onkeydown = function (ev) {
-			const main_area: HTMLElement = getMainArea();
-			const item: Block | null = getMovingBlocks(main_area);
+			const mainArea: HTMLElement = getMainArea();
+			const item: Block | null = getMovingBlocks(mainArea);
 			if (item) {
-				let cur_row: number = parseFloat(item.style.top);
-				let cur_col: number = parseFloat(item.style.left);
+				let curRow: number = parseFloat(item.style.top);
+				let curCol: number = parseFloat(item.style.left);
 				switch (ev.keyCode) {
 					case 37:
-						leftArrow({item, cur_row, cur_col, arr});
+						leftArrow({item, curRow, curCol, arr});
 						break;
 					case 39:
-						rightArrow({item, cur_row, cur_col, arr});
+						rightArrow({item, curRow, curCol, arr});
 						break;
 					case 40:
-						downArrow({item, cur_row, cur_col, arr, moveNewBlock, main_area});
+						downArrow({item, curRow, curCol, arr, moveNewBlock, mainArea});
 						fullRemove();
 						isOver();
 						break;
 					case 38:
-						upArrow({item, cur_row, cur_col, arr});
+						upArrow({item, curRow, curCol, arr});
 						break;
 				}
 			}
 		}
 
 		getArrowLeft()?.addEventListener("click", function () {
-			const item: Block | null = getMovingBlocks(main_area);
+			const item: Block | null = getMovingBlocks(mainArea);
 			if (item) {
-				const cur_row = parseFloat(item.style.top);
-				const cur_col = parseFloat(item.style.left);
-				leftArrow({item, cur_row, cur_col, arr});
+				const curRow = parseFloat(item.style.top);
+				const curCol = parseFloat(item.style.left);
+				leftArrow({item, curRow, curCol, arr});
 			}
 		})
 		getArrowRight()?.addEventListener("click", function () {
-			const item: Block | null = getMovingBlocks(main_area);
+			const item: Block | null = getMovingBlocks(mainArea);
 			if (item) {
-				const cur_row = parseFloat(item.style.top);
-				const cur_col = parseFloat(item.style.left);
-				rightArrow({item, cur_row, cur_col, arr});
+				const curRow = parseFloat(item.style.top);
+				const curCol = parseFloat(item.style.left);
+				rightArrow({item, curRow, curCol, arr});
 			}
 	
 		})
 		getArrowDown()?.addEventListener("click", function () {
-			const item: Block | null = getMovingBlocks(main_area);
+			const item: Block | null = getMovingBlocks(mainArea);
 			if (item) {
-				const cur_row = parseFloat(item.style.top);
-				const cur_col = parseFloat(item.style.left);
-				downArrow({item, cur_row, cur_col, arr, moveNewBlock, main_area});
+				const curRow = parseFloat(item.style.top);
+				const curCol = parseFloat(item.style.left);
+				downArrow({item, curRow, curCol, arr, moveNewBlock, mainArea});
 				fullRemove();
 				isOver();
 			}
 		})
 		getArrowUp()?.addEventListener("click", function () {
-			const item: Block | null = getMovingBlocks(main_area);
+			const item: Block | null = getMovingBlocks(mainArea);
 			if (item) {
-				const cur_row = parseFloat(item.style.top);
-				const cur_col = parseFloat(item.style.left);
-				upArrow({item, cur_row, cur_col, arr});
+				const curRow = parseFloat(item.style.top);
+				const curCol = parseFloat(item.style.left);
+				upArrow({item, curRow, curCol, arr});
 			}
 		})
 	}
