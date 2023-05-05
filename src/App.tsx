@@ -11,9 +11,6 @@ import {getBlock, getMovingBlocks, refreshBlock} from './utils/block';
 import {setPrecolor} from './utils/color';
 import {downArrow, leftArrow, rightArrow, upArrow} from './utils/arrowAction';
 import './App.css';
-export interface StartGameProps {
-	selectedColor: Color,
-}
 
 const App = () => {
 	const [status, setStatus] = useState('start' as StatusType);
@@ -25,8 +22,7 @@ const App = () => {
 	const arrowRight = useRef(null);
 	const arrowUp = useRef(null);
 	const arrowDown = useRef(null);
-	// 使用state设置存在异步问题，color值无法及时更新
-	let color: Color = 'green';
+
 	// 可视化block数组
 	const arrRow: 0[] = (new Array(16)).fill(0);
 	const arr: BlockArr = (new Array(24)).fill(0).map(_ => [...arrRow]);
@@ -71,7 +67,7 @@ const App = () => {
 	}
 
 	const addPreDom = (): void => {
-		const preBlock: Block = getBlock(color);
+		const preBlock: Block = getBlock(realColor);
 		const prePattern: HTMLElement = getPrePattern();
 		prePattern?.prepend(preBlock);
 		setPrecolor(preBlock, prePattern);
@@ -100,10 +96,8 @@ const App = () => {
 		addMainDom();
 	}
 	
-	const handleStartGame = (props: StartGameProps): void => {
-		const {selectedColor} = props;
+	const handleStartGame = (): void => {
 		setStatus('doing');
-		color = selectedColor;
 		clearInterval(moveNewBlock);
 		const mainArea: HTMLElement = getMainArea();
 		mainArea?.addEventListener("DOMNodeInserted", function () {

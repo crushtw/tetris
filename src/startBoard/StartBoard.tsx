@@ -2,10 +2,9 @@ import React, {useState} from "react";
 import {blockColor, allColor} from "../common/constants";
 import './StartBoard.css';
 import {Color} from "../common/interface";
-import {StartGameProps} from "../App";
 
 interface StartBoardProps {
-	startGame: (props: StartGameProps) => void;
+	startGame: () => void;
 	setRealColor: (color: Color) => void;
 }
 
@@ -17,7 +16,7 @@ const StartBoard = (props: StartBoardProps) => {
 		setRealColor(text);
 	}
 	const clickToStart = (): void => {
-		startGame({selectedColor});
+		startGame();
 	}
 
 	return (
